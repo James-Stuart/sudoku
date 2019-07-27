@@ -14,8 +14,6 @@
 
 # This is a module used in one of the steps of the tree solver.
 import copy
-import os
-
 
 # This function checks if the board is valid.
 def sudokucheck(board): # board is a list of lists each with nine entries
@@ -31,13 +29,10 @@ def sudokucheck(board): # board is a list of lists each with nine entries
     # First we have the function check whether the rows are valid.
     for row in board:
 
-        for i in range(0,len(row)):
+        for i in range(len(row)):
 
-                if row[i] == '.':
-                    pass
-
-                else:
-                    for j in range(0,len(row)):
+                if row[i] != '.':
+                    for j in range(len(row)):
                         if i == j:
                             pass
                         elif row[i] == row[j]:
@@ -101,12 +96,9 @@ def sudokucheck(board): # board is a list of lists each with nine entries
         # Check columns are valid
         for col in columns:
 
-            for i in range(0,len(col)):
+            for i in range(len(col)):
 
-                    if col[i] == '.':
-                        pass
-
-                    else:
+                    if col[i] != '.':
                         for j in range(0,len(col)):
                             if i == j:
                                 pass
@@ -218,8 +210,6 @@ def sudoku_complete(board):
 
             if board[i][j] == '.':
                 return False
-            else:
-                pass
 
     return sudokucheck(board)
 
@@ -230,20 +220,20 @@ def print_sudoku(board):
         Print a sudoku board in a manner that looks nice in the terminal
 
     """
-    print ' \n '
-    print ' %s | %s | %s || %s | %s | %s || %s | %s | %s ' % (board[0][0],board[0][1],board[0][2],board[0][3],board[0][4],board[0][5],board[0][6],board[0][7],board[0][8])
-    print ' %s | %s | %s || %s | %s | %s || %s | %s | %s ' % (board[1][0],board[1][1],board[1][2],board[1][3],board[1][4],board[1][5],board[1][6],board[1][7],board[1][8])
-    print ' %s | %s | %s || %s | %s | %s || %s | %s | %s ' % (board[2][0],board[2][1],board[2][2],board[2][3],board[2][4],board[2][5],board[2][6],board[2][7],board[2][8])
-    print '------------------------------------'
-    print '------------------------------------'
-    print ' %s | %s | %s || %s | %s | %s || %s | %s | %s ' % (board[3][0],board[3][1],board[3][2],board[3][3],board[3][4],board[3][5],board[3][6],board[3][7],board[3][8])
-    print ' %s | %s | %s || %s | %s | %s || %s | %s | %s ' % (board[4][0],board[4][1],board[4][2],board[4][3],board[4][4],board[4][5],board[4][6],board[4][7],board[4][8])
-    print ' %s | %s | %s || %s | %s | %s || %s | %s | %s ' % (board[5][0],board[5][1],board[5][2],board[5][3],board[5][4],board[5][5],board[5][6],board[5][7],board[5][8])
-    print '------------------------------------'
-    print '------------------------------------'
-    print ' %s | %s | %s || %s | %s | %s || %s | %s | %s ' % (board[6][0],board[6][1],board[6][2],board[6][3],board[6][4],board[6][5],board[6][6],board[6][7],board[6][8])
-    print ' %s | %s | %s || %s | %s | %s || %s | %s | %s ' % (board[7][0],board[7][1],board[7][2],board[7][3],board[7][4],board[7][5],board[7][6],board[7][7],board[7][8])
-    print ' %s | %s | %s || %s | %s | %s || %s | %s | %s ' % (board[8][0],board[8][1],board[8][2],board[8][3],board[8][4],board[8][5],board[8][6],board[8][7],board[8][8])
+    print(' \n ')
+    print(' %s | %s | %s || %s | %s | %s || %s | %s | %s ' % (board[0][0],board[0][1],board[0][2],board[0][3],board[0][4],board[0][5],board[0][6],board[0][7],board[0][8]))
+    print(' %s | %s | %s || %s | %s | %s || %s | %s | %s ' % (board[1][0],board[1][1],board[1][2],board[1][3],board[1][4],board[1][5],board[1][6],board[1][7],board[1][8]))
+    print(' %s | %s | %s || %s | %s | %s || %s | %s | %s ' % (board[2][0],board[2][1],board[2][2],board[2][3],board[2][4],board[2][5],board[2][6],board[2][7],board[2][8]))
+    print('------------------------------------')
+    print('------------------------------------')
+    print(' %s | %s | %s || %s | %s | %s || %s | %s | %s ' % (board[3][0],board[3][1],board[3][2],board[3][3],board[3][4],board[3][5],board[3][6],board[3][7],board[3][8]))
+    print(' %s | %s | %s || %s | %s | %s || %s | %s | %s ' % (board[4][0],board[4][1],board[4][2],board[4][3],board[4][4],board[4][5],board[4][6],board[4][7],board[4][8]))
+    print(' %s | %s | %s || %s | %s | %s || %s | %s | %s ' % (board[5][0],board[5][1],board[5][2],board[5][3],board[5][4],board[5][5],board[5][6],board[5][7],board[5][8]))
+    print('------------------------------------')
+    print('------------------------------------')
+    print(' %s | %s | %s || %s | %s | %s || %s | %s | %s ' % (board[6][0],board[6][1],board[6][2],board[6][3],board[6][4],board[6][5],board[6][6],board[6][7],board[6][8]))
+    print(' %s | %s | %s || %s | %s | %s || %s | %s | %s ' % (board[7][0],board[7][1],board[7][2],board[7][3],board[7][4],board[7][5],board[7][6],board[7][7],board[7][8]))
+    print(' %s | %s | %s || %s | %s | %s || %s | %s | %s ' % (board[8][0],board[8][1],board[8][2],board[8][3],board[8][4],board[8][5],board[8][6],board[8][7],board[8][8]))
 
     return ' \n '
 
@@ -274,11 +264,9 @@ def sudoku_array_allowed(board):
 
         initial = []
 
-        for i in range(0, len(row)):
+        for i in range(len(row)):
 
-            if row[i] == '.':
-                pass
-            else:
+            if row[i] != '.':
                 initial.append(row[i])
 
         initial_row_entries.append(initial)
@@ -293,19 +281,17 @@ def sudoku_array_allowed(board):
         for i in range(1,10):
             if not(str(i) in list):
                 missing.append(str(i))
-            else:
-                pass
         initial_row_missing.append(missing)
 
     array_allowed_entries = []
 
     # Index over the rows of the board:
-    for i in range(0,9):
+    for i in range(9):
 
         row_allowed_entries = []
 
         # Index over the elements of the row.
-        for j in range(0,9):
+        for j in range(9):
 
             # Create list of entries allowed at i,j.
             local_allowed_entries = []
@@ -315,14 +301,10 @@ def sudoku_array_allowed(board):
 
                 for x in initial_row_missing[i]:
                     board[i][j] = x
-                    if sudokucheck(board) == True:
+                    if sudokucheck(board):
                         # Append the elements if they are allowed.
                         local_allowed_entries.append(x)
-                    else:
-                        pass
                     board[i][j] = '.'
-            else:
-                pass
 
             row_allowed_entries.append(local_allowed_entries)
 
@@ -450,7 +432,7 @@ def sudoku_tree_solver(board):
     # The completed board.
     solution = []
 
-    while solved == False:
+    while not solved:
 
         for brd in tree:
 
@@ -474,20 +456,20 @@ def sudoku_tree_solver(board):
                 min_length = 9
 
                 # Now we find the (an) entry with the smallest number of options.
-                next_entry = []
                 # Row index
-                for i in range(0,9):
+                for i in range(9):
                     # Column index
-                    for j in range(0,9):
+                    for j in range(9):
 
                         # Update minimum length and the index of the entry with
                         # the minimun length.
+                        #TODO: 
                         if 0 < len(allow[i][j]) < min_length:
                             min_length = len(allow[i][j])
                             min_index_row = i
                             min_index_col = j
                             # Entry with lowest number of options.
-                            next_entry = allow[min_index_row][min_index_col]
+                next_entry = allow[min_index_row][min_index_col]
 
                 # Feng Discussion: Feng thinks deep-copy might fix code.
                 for x in next_entry:

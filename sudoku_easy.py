@@ -53,12 +53,12 @@ sudokuboard = [row1,
 # The heart of the script starts from here.
 
 # Print the board
-print print_sudoku(sudokuboard)
-print "This is the board to be solved."
+print(print_sudoku(sudokuboard))
+print("This is the board to be solved.")
 
 # Before we get started, we should check whether the given board is valid.
 if sudokucheck(sudokuboard) == False:
-    print "The board is not valid"
+    print("The board is not valid")
     exit()
 else:
     pass
@@ -69,7 +69,7 @@ sudoku_oneoption(sudokuboard)
 # Print the work done so far.
 if sudoku_complete(sudokuboard):
     print_sudoku(sudokuboard)
-    print 'This board has been solved. \n\n'
+    print('This board has been solved. \n\n')
 else:
     print_sudoku(sudokuboard)
-    print 'More work needs to be done to complete this board.\n\n'
+    print('More work needs to be done to complete this board.\n\n')
