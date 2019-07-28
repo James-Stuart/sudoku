@@ -65,6 +65,29 @@ sudokuboardMedium = [row1,
                ]
 
 
+row1 = ['8', '.', '.',    '.', '.', '.',    '.', '.', '.']
+row2 = ['.', '.', '3',    '6', '.', '.',    '.', '.', '.']
+row3 = ['.', '7', '.',    '.', '9', '.',    '2', '.', '.']
+
+row4 = ['.', '5', '.',    '.', '.', '7',    '.', '.', '.']
+row5 = ['.', '.', '.',    '.', '4', '5',    '7', '.', '.']
+row6 = ['.', '.', '.',    '1', '.', '.',    '.', '3', '.']
+
+row7 = ['.', '.', '1',    '.', '.', '.',    '.', '6', '8']
+row8 = ['.', '.', '8',    '5', '.', '.',    '.', '1', '.']
+row9 = ['.', '9', '.',    '.', '.', '.',    '4', '.', '.']
+sudokuboardHard = [row1,
+               row2,
+               row3,
+               row4,
+               row5,
+               row6,
+               row7,
+               row8,
+               row9
+               ]
+
+
 # =============================================================================
 # # Boolean used to make sure the correct puzzle is being solved.
 # # This will help deal with nonsense input from the user.
@@ -103,8 +126,9 @@ sudokuboardMedium = [row1,
 #         print 'as the number 0.'
 # 
 # =============================================================================
-sudokuboard = sudokuboardEasy
+#sudokuboard = sudokuboardEasy
 #sudokuboard = sudokuboardMedium
+sudokuboard = sudokuboardHard
 # Before we get started, we should check whether the given board is valid.
 if not sudokucheck(sudokuboard):
     print("The board is not valid")

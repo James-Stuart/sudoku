@@ -14,6 +14,7 @@
 
 # This is a module used in one of the steps of the tree solver.
 import copy
+import timeit
 
 # This function checks if the board is valid.
 def sudokucheck(board): # board is a list of lists each with nine entries
@@ -273,6 +274,7 @@ def sudoku_array_allowed(board):
 
 
 
+
     # This creates a list of elements initially missing in each row.
     initial_row_missing = []
 
@@ -283,7 +285,9 @@ def sudoku_array_allowed(board):
                 missing.append(str(i))
         initial_row_missing.append(missing)
 
+
     array_allowed_entries = []
+
 
     # Index over the rows of the board:
     for i in range(9):
@@ -301,6 +305,7 @@ def sudoku_array_allowed(board):
 
                 for x in initial_row_missing[i]:
                     board[i][j] = x
+
                     if sudokucheck(board):
                         # Append the elements if they are allowed.
                         local_allowed_entries.append(x)
@@ -309,6 +314,8 @@ def sudoku_array_allowed(board):
             row_allowed_entries.append(local_allowed_entries)
 
         array_allowed_entries.append(row_allowed_entries)
+
+
 
     return array_allowed_entries
 
@@ -367,7 +374,7 @@ def sudoku_oneoption(board):
         else:
             one_option = False
 
-    return None
+    return board
 
 # Find entry with minimum number of options to make.
 def sudoku_min_option(board):
@@ -440,6 +447,8 @@ def sudoku_tree_solver(board):
                 # of options. Append each of those options to the tree.
                 # Remove the board from the tree.
 
+                brd = sudoku_oneoption(brd)
+
                 if sudoku_complete(brd):
                     solved = True
                     solution = brd
@@ -447,8 +456,10 @@ def sudoku_tree_solver(board):
                 # Remove brd
                 tree.remove(brd)
 
+
                 # Array of allowed entries
                 allow = sudoku_array_allowed(brd)
+
 
                 # Local variables to find the entries with smallest options.
                 min_index_row = 0
@@ -469,6 +480,8 @@ def sudoku_tree_solver(board):
                             min_index_row = i
                             min_index_col = j
                             # Entry with lowest number of options.
+
+
                 next_entry = allow[min_index_row][min_index_col]
 
                 # Feng Discussion: Feng thinks deep-copy might fix code.
